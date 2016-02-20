@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -27,5 +23,10 @@ Route::get('/', function () {
 */
 
 Route::group(['middleware' => ['web']], function () {
+
+	Route::get('/'				 ,'TasksController@index');
+	Route::post('tasks'			 ,'TasksController@store');
+	Route::patch('tasks/{task}' ,'TasksController@update');
+	Route::delete('tasks/{task}','TasksController@destroy');
     //
 });
